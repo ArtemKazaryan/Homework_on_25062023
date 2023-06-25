@@ -96,3 +96,47 @@ WHERE Price*Count < 500
 SELECT *
 FROM Ware
 WHERE Material = "кожа" AND Count < 5 AND Price*Count <= 450
+
+15. Напишите запрос, который выведет все нейлоновые сумки цена на них не превышает 250грн.
+SELECT *
+FROM Ware
+WHERE Material = 'нейлон' AND Price < 250
+
+16. Замените матерьял нейлон на брезент, если сумка стоит менее 200грн.
+UPDATE Ware
+SET Material = 'брезент'
+WHERE Material GLOB '%нейлон%' AND Price < 200
+
+17. Напишите запрос, который выведет все сумки с косметичками.
+SELECT *
+FROM Ware
+WHERE REM LIKE '%косметичка%'
+
+18. Напишите запрос, который покажет все кожаные сумки черного цвета китайского производства.
+SELECT *
+FROM Ware
+WHERE Material = 'кожа' AND Color = 'ч' AND Country = 'Китай'
+
+19. Напишите запрос, который покажет все сумки с размером более 15 дюймов.
+SELECT *
+  FROM Ware
+ WHERE REM GLOB '*1[5-9]*' OR 
+       REM GLOB '[2-9][1-9]*'
+
+20. Напишите запрос, который покажет всех поставщиков сумок не черного цвета.
+SELECT *
+FROM Ware
+WHERE Color != 'ч'
+
+21. Замените матерьял полиэстер у сумок китайского производства на нейлон.
+UPDATE Ware
+SET Material = 'нейлон'
+WHERE Country = 'Китай' AND Material = 'полиэстер'
+
+22. В записях с кодом товара: 1015, 1041, 1032, 1010 материал нейлон заменить на полиэстер если страна производитель Китай.
+UPDATE Ware
+SET Material = 'полиэстер'
+WHERE ID IN (1015, 1041, 1032, 1010) AND Country = 'Китай' AND Material = 'нейлон'
+
+
+
